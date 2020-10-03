@@ -29,14 +29,13 @@ public class Plane : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             curThrust = thrust * 2f;
-            //curSpd = flyingSpeed * 1.5f;
+            curSpd = flyingSpeed * 1.5f;
             curRot = rotationSpeed * .5f;
         }
         else if (Input.GetMouseButton(1))
         {
             curThrust = thrust * .5f;
-            //curSpd = flyingSpeed * .75f;
-            curRot = rotationSpeed * 2f;
+            curRot = rotationSpeed * 1.5f;
         }
         else
         {
