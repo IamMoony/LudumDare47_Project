@@ -78,7 +78,7 @@ SpriteRenderer:
   m_Size: {x: 6.44, y: 5.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &747861794522772042
@@ -129,7 +129,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0.1
+  m_LinearDrag: 0.5
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -149,13 +149,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b7654064faecb4f9d40284d20bf43f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 0.5
-  flyingSpeed: 10
-  thrust: 8
+  rotationSpeed: 1.5
+  flyingSpeed: 8
+  thrust: 50
   liftForce: 1
+  thrustMultiplierGas: 2
+  thrustMultiplierBrake: 0.5
+  speedMultiplierGas: 2
+  speedMultiplierBrake: 1
+  rotationMultiplierGas: 0.8
+  rotationMultiplierBrake: 2.5
   rb: {fileID: 747861794522772040}
   audioS: {fileID: 747861794522772046}
-  NPC: 0
 --- !u!61 &747861794522772047
 BoxCollider2D:
   m_ObjectHideFlags: 0

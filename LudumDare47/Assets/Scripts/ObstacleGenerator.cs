@@ -9,8 +9,10 @@ public class ObstacleGenerator : MonoBehaviour
     public float initialSpawnOffsetX;
     public float spawnOffsetX;
     public float spawnOffsetY;
+    public float spawnOffsetZ;
     public float spawnVarianceX;
     public float spawnVarianceY;
+    public float spawnVarianceZ;
     public float despawnOffsetX;
     private Transform player;
     private List<GameObject> spawnedObstacles;
@@ -27,7 +29,7 @@ public class ObstacleGenerator : MonoBehaviour
     {
         if (spawnedObstacles.Count < spawnAmount) //Spawn Obstacles
         {
-            Vector2 spawnPosition = player.position + new Vector3(waveCount == 0 ? initialSpawnOffsetX : spawnOffsetX, 0);
+            Vector3 spawnPosition = player.position + new Vector3(waveCount == 0 ? initialSpawnOffsetX : spawnOffsetX, 0);
             waveCount++;
             for (int i = 0; i < spawnAmount; i++)
             {
@@ -35,8 +37,8 @@ public class ObstacleGenerator : MonoBehaviour
                     spawnedObstacles.Add(Instantiate(obstacles[Random.Range(0, obstacles.Length)], spawnPosition, Quaternion.identity, transform));
                 else
                 {
-                    spawnedObstacles.Add(Instantiate(obstacles[Random.Range(0, obstacles.Length)], spawnPosition + new Vector2(Random.Range(-spawnVarianceX, spawnVarianceX), spawnOffsetY * i + Random.Range(-spawnVarianceY, spawnVarianceY)), Quaternion.identity, transform));
-                    spawnedObstacles.Add(Instantiate(obstacles[Random.Range(0, obstacles.Length)], spawnPosition + new Vector2(Random.Range(-spawnVarianceX, spawnVarianceX), -spawnOffsetY * i + Random.Range(-spawnVarianceY, spawnVarianceY)), Quaternion.identity, transform));
+                    spawnedObstacles.Add(Instantiate(obstacles[Random.Range(0, obstacles.Length)], spawnPosition + new Vector3(Random.Range(-spawnVarianceX, spawnVarianceX), spawnOffsetY * i + Random.Range(-spawnVarianceY, spawnVarianceY), transform.position.z + spawnOffsetZ + Random.Range(-spawnVarianceZ, spawnVarianceZ)), Quaternion.identity, transform));
+                    spawnedObstacles.Add(Instantiate(obstacles[Random.Range(0, obstacles.Length)], spawnPosition + new Vector3(Random.Range(-spawnVarianceX, spawnVarianceX), -spawnOffsetY * i + Random.Range(-spawnVarianceY, spawnVarianceY), transform.position.z + spawnOffsetZ + Random.Range(-spawnVarianceZ, spawnVarianceZ)), Quaternion.identity, transform));
                 }
             }
         }
