@@ -15,10 +15,13 @@ public class Plane : MonoBehaviour
     public float speedMultiplierBrake;
     public float rotationMultiplierGas;
     public float rotationMultiplierBrake;
+    public float initialPitch;
+    public float pitchAmountPerFrame;
 
     public Rigidbody2D rb;
     public AudioSource audioS;
 
+    private float curPitch;
     private float curSpd;
     private float curThrust;
     private float curRot;
@@ -28,6 +31,8 @@ public class Plane : MonoBehaviour
         curSpd = flyingSpeed;
         curThrust = thrust;
         curRot = rotationSpeed;
+        curPitch = initialPitch;
+        audioS.pitch = curPitch;
     }
 
     void Update()
@@ -50,7 +55,8 @@ public class Plane : MonoBehaviour
             curSpd = flyingSpeed;
             curRot = rotationSpeed;
         }
-        audioS.pitch = 0.5f + rb.velocity.magnitude / curSpd;
+        curPitch = Mathf.Lerp(curPitch, initialPitch + (rb.velocity.magnitude / curSpd - 1) * 10, pitchAmountPerFrame * Time.deltaTime);
+        audioS.pitch = curPitch;
     }
 
     private void FixedUpdate()
