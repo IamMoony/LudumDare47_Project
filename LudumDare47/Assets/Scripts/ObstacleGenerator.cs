@@ -11,6 +11,7 @@ public class ObstacleGenerator : MonoBehaviour
     public float spawnOffsetY;
     public float spawnVarianceX;
     public float spawnVarianceY;
+    public float despawnOffsetX;
     private Transform player;
     private List<GameObject> spawnedObstacles;
     private int waveCount;
@@ -43,9 +44,7 @@ public class ObstacleGenerator : MonoBehaviour
         {
             for (int i = 0; i < spawnedObstacles.Count; i++)
             {
-                //transform.Translate(Vector2.left * 0.01f * Time.DeltaTime);
-
-                if (spawnedObstacles[i].transform.position.x < player.position.x - spawnOffsetX) //Remove Obstacles
+                if (spawnedObstacles[i].transform.position.x < player.position.x - despawnOffsetX) //Remove Obstacles
                 {
                     GameObject go = spawnedObstacles[i];
                     spawnedObstacles.RemoveAt(i);
