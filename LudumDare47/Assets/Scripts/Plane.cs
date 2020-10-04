@@ -9,6 +9,12 @@ public class Plane : MonoBehaviour
     public float flyingSpeed;
     public float thrust;
     public float liftForce;
+    public float thrustMultiplierGas;
+    public float thrustMultiplierBrake;
+    public float speedMultiplierGas;
+    public float speedMultiplierBrake;
+    public float rotationMultiplierGas;
+    public float rotationMultiplierBrake;
 
     public Rigidbody2D rb;
     public AudioSource audioS;
@@ -28,19 +34,20 @@ public class Plane : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            curThrust = thrust * 2f;
-            curSpd = flyingSpeed * 1.5f;
-            curRot = rotationSpeed * .5f;
+            curThrust = thrust * thrustMultiplierGas;
+            curSpd = flyingSpeed * speedMultiplierGas;
+            curRot = rotationSpeed * rotationMultiplierGas;
         }
         else if (Input.GetMouseButton(1))
         {
-            curThrust = thrust * .5f;
-            curRot = rotationSpeed * 1.5f;
+            curThrust = thrust * thrustMultiplierBrake;
+            curSpd = flyingSpeed * speedMultiplierBrake;
+            curRot = rotationSpeed * rotationMultiplierBrake;
         }
         else
         {
             curThrust = thrust;
-            //curSpd = flyingSpeed;
+            curSpd = flyingSpeed;
             curRot = rotationSpeed;
         }
         audioS.pitch = 0.5f + rb.velocity.magnitude / curSpd;
