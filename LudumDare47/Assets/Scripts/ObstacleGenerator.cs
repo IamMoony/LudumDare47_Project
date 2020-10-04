@@ -44,6 +44,12 @@ public class ObstacleGenerator : MonoBehaviour
         {
             for (int i = 0; i < spawnedObstacles.Count; i++)
             {
+                if (spawnedObstacles[i] == null)
+                {
+                    spawnedObstacles.RemoveAt(i);
+                    return;
+                }
+
                 if (spawnedObstacles[i].transform.position.x < player.position.x - despawnOffsetX) //Remove Obstacles
                 {
                     GameObject go = spawnedObstacles[i];
