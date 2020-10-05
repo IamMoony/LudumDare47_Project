@@ -6,8 +6,11 @@ using UnityEngine.SceneManagement;
 public class EnemyPlane : MonoBehaviour
 {
     public float rotationSpeed;
+    public float rotationVariance;
     public float flyingSpeed;
+    public float flyingSpeedVariance;
     public float thrust;
+    public float thrustVariance;
     public float liftForce;
 
     private Rigidbody2D rb;
@@ -21,9 +24,9 @@ public class EnemyPlane : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         audioS = GetComponent<AudioSource>();
-        curSpd = flyingSpeed;
-        curThrust = thrust;
-        curRot = rotationSpeed;
+        curSpd = flyingSpeed + Random.Range(-flyingSpeedVariance, flyingSpeedVariance);
+        curThrust = thrust + Random.Range(-thrustVariance, thrustVariance);
+        curRot = rotationSpeed + Random.Range(-rotationVariance, rotationVariance);
     }
 
     void Update()

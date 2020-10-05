@@ -172,8 +172,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flyingSpeed: 1
+  flyingSpeedVariance: 0.5
   liftForce: 100
+  liftForceVariance: 50
   liftDuration: 2
+  liftDurationVariance: 1
   liftDelay: 5
   liftDelayVariance: 2.5
 --- !u!50 &-1216506191803933349
