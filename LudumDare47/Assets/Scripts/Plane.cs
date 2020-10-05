@@ -19,20 +19,24 @@ public class Plane : MonoBehaviour
     public float pitchAmountPerFrame;
 
     public Rigidbody2D rb;
-    public AudioSource audioS;
+    public AudioSource sound_Engine;
+    public AudioSource sound_Explosion;
+    public GameObject effect_Explosion;
 
+    private UIManager uiManager;
     private float curPitch;
     private float curSpd;
     private float curThrust;
     private float curRot;
 
-    void Start()
+    void Awake()
     {
         curSpd = flyingSpeed;
         curThrust = thrust;
         curRot = rotationSpeed;
         curPitch = initialPitch;
-        audioS.pitch = curPitch;
+        sound_Engine.pitch = curPitch;
+        uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
     void Update()
@@ -56,7 +60,7 @@ public class Plane : MonoBehaviour
             curRot = rotationSpeed;
         }
         curPitch = Mathf.Lerp(curPitch, initialPitch + (rb.velocity.magnitude / flyingSpeed - 1) * 2, pitchAmountPerFrame * Time.deltaTime);
-        audioS.pitch = curPitch;
+        sound_Engine.pitch = curPitch;
     }
 
     private void FixedUpdate()
@@ -72,6 +76,12 @@ public class Plane : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Obstacle")
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        {
+            uiManager.GameOver();
+            sound_Engine.Stop();
+            Instantiate(effect_Explosion, transform.position, Quaternion.identity);
+            Instantiate(sound_Explosion, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 }

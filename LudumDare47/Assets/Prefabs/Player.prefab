@@ -4869,7 +4869,7 @@ GameObject:
   - component: {fileID: 747861794522772041}
   - component: {fileID: 747861794522772047}
   - component: {fileID: 747861794522772046}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4935,6 +4935,8 @@ MonoBehaviour:
   speedMultiplierBrake: 0.8
   rotationMultiplierGas: 0.5
   rotationMultiplierBrake: 2.5
+  initialPitch: 0.5
+  pitchAmountPerFrame: 0.5
   rb: {fileID: 747861794522772040}
   audioS: {fileID: 747861794522772046}
 --- !u!61 &747861794522772047

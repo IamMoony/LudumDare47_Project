@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8298387592319406605}
   - component: {fileID: -1216506191803933349}
   - component: {fileID: 5652277232428892496}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Balloon
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

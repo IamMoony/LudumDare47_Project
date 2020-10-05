@@ -5,9 +5,10 @@ using UnityEngine;
 public class Pigeon : MonoBehaviour
 {
     public float flyingSpeed;
+    public Vector2 flyingDirection;
 
     void FixedUpdate()
     {
-        transform.Translate(Vector2.left * flyingSpeed * Time.fixedDeltaTime);
+        transform.Translate(flyingDirection * flyingSpeed * Time.fixedDeltaTime);
     }
 }
