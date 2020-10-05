@@ -44,6 +44,10 @@ public class UIManager : MonoBehaviour
         {
             SceneManager.LoadScene("Menu");
         }
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            Time.timeScale = Time.timeScale == 1 ? 0 : 1;
+        }
     }
 
     public void GameOver()
