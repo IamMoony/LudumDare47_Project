@@ -55,7 +55,7 @@ public class Plane : MonoBehaviour
             curSpd = flyingSpeed;
             curRot = rotationSpeed;
         }
-        curPitch = Mathf.Lerp(curPitch, initialPitch + (rb.velocity.magnitude / curSpd - 1) * 10, pitchAmountPerFrame * Time.deltaTime);
+        curPitch = Mathf.Lerp(curPitch, initialPitch + (rb.velocity.magnitude / flyingSpeed - 1) * 2, pitchAmountPerFrame * Time.deltaTime);
         audioS.pitch = curPitch;
     }
 
