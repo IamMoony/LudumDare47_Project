@@ -44,14 +44,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacles:
-  - {fileID: 9089016032957151435, guid: b59d33e89380bb94e8bf09970703ab06, type: 3}
   - {fileID: 9089016032957151435, guid: 7cbc36e28e9b5e94491e39a2815cd4c5, type: 3}
-  spawnAmount: 5
-  initialSpawnOffsetX: 50
-  spawnOffsetX: 50
-  spawnOffsetY: 10
-  spawnOffsetZ: 0
+  - {fileID: 747861794522772042, guid: f596c79658ad39e4ea9c31355cd646ab, type: 3}
+  spawnAmount: 15
+  initialSpawnOffsetX: 25
+  initialSpawnOffsetY: 15
   spawnVarianceX: 10
-  spawnVarianceY: 4
-  spawnVarianceZ: 0
-  despawnOffsetX: 50
+  spawnVarianceY: 40
+  despawnOffsetX: 25
+  despawnOffsetY: 20

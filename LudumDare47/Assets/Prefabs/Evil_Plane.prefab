@@ -191,8 +191,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 1
-  flyingSpeed: 8
-  thrust: 20
+  rotationVariance: 0.5
+  flyingSpeed: 6
+  flyingSpeedVariance: 3
+  thrust: 30
+  thrustVariance: 20
   liftForce: 1
 --- !u!1 &7422201727708372462
 GameObject:

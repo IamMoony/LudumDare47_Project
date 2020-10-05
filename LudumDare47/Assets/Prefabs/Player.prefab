@@ -4938,7 +4938,11 @@ MonoBehaviour:
   initialPitch: 0.5
   pitchAmountPerFrame: 0.5
   rb: {fileID: 747861794522772040}
-  audioS: {fileID: 747861794522772046}
+  sound_Engine: {fileID: 747861794522772046}
+  sound_Explosion: {fileID: 6893928944441049287, guid: 464c2209f1bccce479e057239c43ba63,
+    type: 3}
+  effect_Explosion: {fileID: 2040423215915513817, guid: 19d96092e7d266941ad581eaed9f91bd,
+    type: 3}
 --- !u!61 &747861794522772047
 BoxCollider2D:
   m_ObjectHideFlags: 0
