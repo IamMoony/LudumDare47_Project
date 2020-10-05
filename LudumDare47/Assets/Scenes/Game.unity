@@ -340,9 +340,9 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: e560ade7d9fd34140a568178cf2aec04, type: 3}
-    m_FontSize: 140
+    m_FontSize: 120
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 150
     m_Alignment: 4
@@ -748,9 +748,9 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: e560ade7d9fd34140a568178cf2aec04, type: 3}
-    m_FontSize: 140
+    m_FontSize: 120
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 259
     m_Alignment: 4

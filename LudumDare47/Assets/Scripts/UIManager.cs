@@ -12,13 +12,13 @@ public class UIManager : MonoBehaviour
     public Transform player;
 
     private bool gameOver = false;
-    private float score;
-    private float highScore;
+    private int score;
+    private int highScore;
 
     private void Awake()
     {
         panelGameOver.SetActive(false);
-        highScore = PlayerPrefs.GetFloat("HighScore");
+        highScore = PlayerPrefs.GetInt("HighScore");
         highScoreUI.text = "" + highScore;
     }
 
@@ -31,12 +31,12 @@ public class UIManager : MonoBehaviour
         }
         else if (player != null)
         {
-            score = Mathf.Clamp(player.position.x, 0, Mathf.Infinity);
+            score = Mathf.RoundToInt(Mathf.Clamp(player.position.x, 0, Mathf.Infinity));
             scoreUI.text = "" + score;
         }
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            PlayerPrefs.SetFloat("HighScore", 0);
+            PlayerPrefs.SetInt("HighScore", 0);
             highScore = 0;
             highScoreUI.text = "" + 0;
         }
@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour
         if (score > highScore)
         {
             highScore = score;
-            PlayerPrefs.SetFloat("HighScore", highScore);
+            PlayerPrefs.SetInt("HighScore", highScore);
         }
     }
 }
