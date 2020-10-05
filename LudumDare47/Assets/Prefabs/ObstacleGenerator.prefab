@@ -46,10 +46,13 @@ MonoBehaviour:
   obstacles:
   - {fileID: 9089016032957151435, guid: 7cbc36e28e9b5e94491e39a2815cd4c5, type: 3}
   - {fileID: 747861794522772042, guid: f596c79658ad39e4ea9c31355cd646ab, type: 3}
-  spawnAmount: 15
+  - {fileID: 9089016032957151435, guid: e5afda2ef0edee046815e6a11daf0a01, type: 3}
+  initialSpawnAmount: 5
+  maximumSpawnAmount: 30
+  spawnAmountIncreaseDistance: 10
   initialSpawnOffsetX: 25
   initialSpawnOffsetY: 15
-  spawnVarianceX: 10
+  spawnVarianceX: 15
   spawnVarianceY: 40
   despawnOffsetX: 25
   despawnOffsetY: 20

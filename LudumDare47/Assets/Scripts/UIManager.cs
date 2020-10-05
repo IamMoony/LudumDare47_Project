@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
         if (gameOver)
         {
             if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1"))
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene("Game");
         }
         else if (player != null)
         {
@@ -39,6 +39,10 @@ public class UIManager : MonoBehaviour
             PlayerPrefs.SetFloat("HighScore", 0);
             highScore = 0;
             highScoreUI.text = "" + 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Menu");
         }
     }
 

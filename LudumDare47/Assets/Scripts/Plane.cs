@@ -81,6 +81,7 @@ public class Plane : MonoBehaviour
             sound_Engine.Stop();
             Instantiate(effect_Explosion, transform.position, Quaternion.identity);
             Instantiate(sound_Explosion, transform.position, Quaternion.identity);
+            Destroy(collision.gameObject);
             Destroy(gameObject);
         }
     }
