@@ -7,13 +7,19 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public Text scoreUI;
+    public Text highScoreUI;
     public GameObject panelGameOver;
+    public Transform player;
 
     private bool gameOver = false;
+    private float score;
+    private float highScore;
 
     private void Awake()
     {
         panelGameOver.SetActive(false);
+        highScore = PlayerPrefs.GetFloat("HighScore");
+        highScoreUI.text = "" + highScore;
     }
 
     private void Update()
@@ -23,11 +29,27 @@ public class UIManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1"))
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+        else if (player != null)
+        {
+            score = Mathf.Clamp(player.position.x, 0, Mathf.Infinity);
+            scoreUI.text = "" + score;
+        }
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            PlayerPrefs.SetFloat("HighScore", 0);
+            highScore = 0;
+            highScoreUI.text = "" + 0;
+        }
     }
 
     public void GameOver()
     {
         gameOver = true;
         panelGameOver.SetActive(true);
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetFloat("HighScore", highScore);
+        }
     }
 }
