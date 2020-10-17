@@ -46,13 +46,14 @@ public class Plane : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            if (Input.GetTouch(0).position.x > .5f)
+            float touchPosX = Camera.main.ScreenToViewportPoint(Input.GetTouch(0).position).x;
+            if (touchPosX > .5f)
             {
                 curThrust = thrust * thrustMultiplierGas;
                 curSpd = flyingSpeed * speedMultiplierGas;
                 curRot = rotationSpeed * rotationMultiplierGas;
             }
-            else if (Input.GetTouch(0).position.x <= .5f)
+            else if (touchPosX <= .5f)
             {
                 curThrust = thrust * thrustMultiplierBrake;
                 curSpd = flyingSpeed * speedMultiplierBrake;
