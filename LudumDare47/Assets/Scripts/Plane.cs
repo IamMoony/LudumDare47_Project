@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Plane : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class Plane : MonoBehaviour
     public AudioSource sound_Engine;
     public AudioSource sound_Explosion;
     public GameObject effect_Explosion;
+    public Button button_Accelerate;
+    public Button button_Brake;
 
     private UIManager uiManager;
     private float curPitch;
@@ -41,24 +44,49 @@ public class Plane : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.touchCount > 0)
         {
-            curThrust = thrust * thrustMultiplierGas;
-            curSpd = flyingSpeed * speedMultiplierGas;
-            curRot = rotationSpeed * rotationMultiplierGas;
+            if (Input.GetTouch(0).position.x > .5f)
+            {
+                curThrust = thrust * thrustMultiplierGas;
+                curSpd = flyingSpeed * speedMultiplierGas;
+                curRot = rotationSpeed * rotationMultiplierGas;
+            }
+            else if (Input.GetTouch(0).position.x <= .5f)
+            {
+                curThrust = thrust * thrustMultiplierBrake;
+                curSpd = flyingSpeed * speedMultiplierBrake;
+                curRot = rotationSpeed * rotationMultiplierBrake;
+            }
+            else
+            {
+                curThrust = thrust;
+                curSpd = flyingSpeed;
+                curRot = rotationSpeed;
+            }
         }
-        else if (Input.GetMouseButton(1))
-        {
-            curThrust = thrust * thrustMultiplierBrake;
-            curSpd = flyingSpeed * speedMultiplierBrake;
-            curRot = rotationSpeed * rotationMultiplierBrake;
+        else if (Input.touchCount == 0)
+            {
+            if (Input.GetButton("Fire1"))
+            {
+                curThrust = thrust * thrustMultiplierGas;
+                curSpd = flyingSpeed * speedMultiplierGas;
+                curRot = rotationSpeed * rotationMultiplierGas;
+            }
+            else if (Input.GetButton("Fire2"))
+            {
+                curThrust = thrust * thrustMultiplierBrake;
+                curSpd = flyingSpeed * speedMultiplierBrake;
+                curRot = rotationSpeed * rotationMultiplierBrake;
+            }
+            else
+            {
+                curThrust = thrust;
+                curSpd = flyingSpeed;
+                curRot = rotationSpeed;
+            }
         }
-        else
-        {
-            curThrust = thrust;
-            curSpd = flyingSpeed;
-            curRot = rotationSpeed;
-        }
+       
         curPitch = Mathf.Lerp(curPitch, initialPitch + (rb.velocity.magnitude / flyingSpeed - 1) * 2, pitchAmountPerFrame * Time.deltaTime);
         sound_Engine.pitch = curPitch;
     }
